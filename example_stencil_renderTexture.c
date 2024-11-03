@@ -19,8 +19,8 @@ void BeginStencilMode()
 
 void ClearStencilMask()
 {
-    glClearStencil(0);
-    glClear( GL_STENCIL_BUFFER_BIT );
+	glClearStencil(0);
+	glClear( GL_STENCIL_BUFFER_BIT );
 }
 
 void BeginStencilMask()
@@ -146,8 +146,8 @@ int main(void)
             (Rectangle){0,0,256,256},(Rectangle){200+GetRandomValue(0,20),250,400,400},
             (Vector2){200,200},0,WHITE);
 
-            EndStencilMode();
-            }
+        EndStencilMode();
+        }
 
         /// Draw without the stencil mask
         DrawRectangle(0,300,screenWidth,20,GREEN);
