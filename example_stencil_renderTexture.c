@@ -2,7 +2,8 @@
 *
 * STENCIL Example (using RenderTexture) for raylib
 * not tested for cross-platform compatibility (works on Desktop)
-* originally taken from https://github.com/raysan5/raylib/discussions/2964
+* originally by Sandro kuridze (dnxa)
+* taken from https://github.com/raysan5/raylib/discussions/2964
 *
 ********************************************************************************************/
 #include <stdlib.h>
