@@ -5,8 +5,10 @@
 *
 ********************************************************************************************/
 #include <stdlib.h>
+#include <math.h>
 #include "raylib.h"
 #include "rlgl.h"
+#include "external/glad.h"
 
 unsigned int depth_tex_id;
 
@@ -73,9 +75,13 @@ int main(void)
     camera.up=(Vector3){0,1,0};
     camera.projection=CAMERA_PERSPECTIVE;
 
+    float phase=0;
+
     SetTargetFPS(10);
     while (!WindowShouldClose())
         {
+        phase+=GetFrameTime();
+
         BeginDrawing();
         ClearBackground(BLACK);    
         BeginTextureMode(rendetex);
@@ -86,8 +92,9 @@ int main(void)
         EndTextureMode();
 
         BeginTextureMode(rendetex2);
+        glClear(GL_COLOR_BUFFER_BIT);
         BeginMode3D(camera);
-        DrawSphere((Vector3){0,0,-5},8,GREEN);
+        DrawSphere((Vector3){sin(phase)*1.6,0,-5},8,GREEN);
         EndMode3D();
         EndTextureMode();
 
@@ -100,7 +107,7 @@ int main(void)
         0,WHITE);
         }
 
-        BeginBlendMode(BLEND_ALPHA);
+        BeginBlendMode(BLEND_ADDITIVE);
 
         if (IsKeyDown(KEY_TWO))
         {
@@ -123,4 +130,3 @@ int main(void)
     //--------------------------------------------------------------------------------------
     return 0;
 }
-
