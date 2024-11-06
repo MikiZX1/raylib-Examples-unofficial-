@@ -272,7 +272,7 @@ int main(void)
         EndShaderMode();
 
         rlEnableColorBlend();
-        DrawText("Show attachment textures (press key): [0][1][2][3][4][5]", 10, 70, 20, DARKGRAY);
+        DrawText("Show attachment textures (press key): [1][2][3][4][5][6]", 10, 70, 20, DARKGRAY);
 
         DrawFPS(10, 10);
             
