@@ -7,12 +7,9 @@
 
 #include <stdlib.h>                     // Required for: malloc(), free()
 #include <stdio.h>
-#include <string.h>                     // Required for: strcmp(), strlen() [Used in rlglInit(), on extensions loading]
-#include <math.h>                       // Required for: sqrtf(), sinf(), cosf(), floor(), log()
 
 #include "raylib.h"
 #include "rlgl.h"
-#include "external/glad.h"
 
 const char* vs2="#version 330 core              \n"
 "layout (location = 0) in vec3 vertexPosition;\n"
@@ -118,12 +115,18 @@ int main(void)
         rlActiveTextureSlot(5);        rlEnableTexture(tex_mytexture5.id);
 
         // link our shader's locs to the correct OpenGL texture unit
-        glUniform1i(rlGetLocationUniform(shader_display.id, "mytexture0"), 0);
-        glUniform1i(rlGetLocationUniform(shader_display.id, "mytexture1"), 1);
-        glUniform1i(rlGetLocationUniform(shader_display.id, "mytexture2"), 2);
-        glUniform1i(rlGetLocationUniform(shader_display.id, "mytexture3"), 3);
-        glUniform1i(rlGetLocationUniform(shader_display.id, "mytexture4"), 4);
-        glUniform1i(rlGetLocationUniform(shader_display.id, "mytexture5"), 5);
+        int temp_tex_unit=0;
+        rlSetUniform(rlGetLocationUniform(shader_display.id, "mytexture0"), &temp_tex_unit,RL_SHADER_UNIFORM_INT,1);
+        temp_tex_unit++;
+        rlSetUniform(rlGetLocationUniform(shader_display.id, "mytexture1"), &temp_tex_unit,RL_SHADER_UNIFORM_INT,1);
+        temp_tex_unit++;
+        rlSetUniform(rlGetLocationUniform(shader_display.id, "mytexture2"), &temp_tex_unit,RL_SHADER_UNIFORM_INT,1);
+        temp_tex_unit++;
+        rlSetUniform(rlGetLocationUniform(shader_display.id, "mytexture3"), &temp_tex_unit,RL_SHADER_UNIFORM_INT,1);
+        temp_tex_unit++;
+        rlSetUniform(rlGetLocationUniform(shader_display.id, "mytexture4"), &temp_tex_unit,RL_SHADER_UNIFORM_INT,1);
+        temp_tex_unit++;
+        rlSetUniform(rlGetLocationUniform(shader_display.id, "mytexture5"), &temp_tex_unit,RL_SHADER_UNIFORM_INT,1);
 
         rlLoadDrawQuad();
         
