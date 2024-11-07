@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *
-*   raylib drawig non-batched full-screen quad using 
+*   raylib drawing non-batched full-screen quad using 
 *   a shader that takes 6 textures
 *
 ********************************************************************************************/
