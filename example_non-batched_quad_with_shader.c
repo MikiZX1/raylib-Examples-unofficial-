@@ -55,7 +55,7 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "raylib example - 6 textures shader");
 
-    // Load geometry buffer (G-buffer) shader and deferred shader
+    // Load shader
     Shader shader_display = LoadShaderFromMemory(vs2,fs2);
 
     // used to visualize one selected draw buffer from shader
@@ -91,7 +91,7 @@ int main(void)
         // Update
         //----------------------------------------------------------------------------------
      
-        // Check key inputs to switch between G-buffer textures
+        // Check key inputs to switch between textures
         if (IsKeyPressed(KEY_ONE))      tex_select=0.0;
         if (IsKeyPressed(KEY_TWO))      tex_select=1.0;
         if (IsKeyPressed(KEY_THREE))    tex_select=2.0;
