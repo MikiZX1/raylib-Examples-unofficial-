@@ -6,6 +6,7 @@
 ********************************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "raylib.h"
 
@@ -34,7 +35,7 @@ int main(void)
     my_wave.sampleSize=32;
 
     float* tmp_pointer=(float*)my_wave.data;
-    float volume=1.0;
+    float volume=1.0;  
     // FILL IN THE SOUND's AUDIO BUFFER WITH SAMPLES
     for (int i=0;i<my_wave.frameCount;i++)
         {
