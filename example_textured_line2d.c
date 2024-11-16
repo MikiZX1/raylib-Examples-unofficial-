@@ -15,7 +15,7 @@ void DrawTexturedLine(Vector2 from, Vector2 to,
         Texture line_texture, 
         float horizontal_scale, float line_height, Color color)
 {
-  double angle=atan2(from.y-to.y,from.x-to.x);
+  double angle=atan2(to.y-from.y,to.x-from.x);
   float linelen=Vector2Distance(from,to);
   DrawTexturePro(line_texture,
     (Rectangle){0,0,linelen/horizontal_scale,myTexture_size},
@@ -57,6 +57,9 @@ int main(void)
         ClearBackground(BLACK);    
         DrawTexturedLine((Vector2){300,300}, 
                 (Vector2){300+cos(ypos)*400.0,300+sin(ypos)*400.0},
+                myTexture,0.4,32.0, WHITE);
+        DrawTexturedLine((Vector2){700,400}, 
+                (Vector2){0,100},
                 myTexture,0.4,32.0, WHITE);
         DrawFPS(10, 10);
         EndDrawing();    
