@@ -46,6 +46,7 @@ int main(void)
     ImageDrawLineEx(&tmp_image,(Vector2){0,20},(Vector2){128,20},10,GRAY);
     ImageDrawLineEx(&tmp_image,(Vector2){0,100},(Vector2){128,100},10,GRAY);
     myTexture=LoadTextureFromImage(tmp_image);
+    UnloadImage(tmp_image);
 
     float ypos=20.0;
     int targetFPS = GetMonitorRefreshRate(GetCurrentMonitor());  
@@ -64,6 +65,7 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
+    UnloadTexture(myTexture);
     CloseWindow();          // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
     return 0;
