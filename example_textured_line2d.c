@@ -20,7 +20,7 @@ void DrawTexturedLine(Vector2 from, Vector2 to,
   DrawTexturePro(line_texture,
     (Rectangle){0,0,linelen/horizontal_scale,myTexture_size},
     (Rectangle){from.x,from.y,linelen,line_height},
-    (Vector2){0.0,0.0},angle*RAD2DEG,color);
+    (Vector2){0.0,line_height/2},angle*RAD2DEG,color);
 }
 
 //------------------------------------------------------------------------------------
