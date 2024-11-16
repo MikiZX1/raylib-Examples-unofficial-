@@ -56,7 +56,7 @@ int main(void)
         BeginDrawing();
         ClearBackground(BLACK);    
         DrawTexturedLine((Vector2){300,300}, 
-                (Vector2){300+cos(ypos)*ypos*30.0,300+sin(ypos)*ypos*30.0},
+                (Vector2){300+cos(ypos)*400.0,300+sin(ypos)*400.0},
                 myTexture,0.4,32.0, WHITE);
         DrawFPS(10, 10);
         EndDrawing();    
