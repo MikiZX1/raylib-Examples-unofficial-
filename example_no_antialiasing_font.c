@@ -1,5 +1,5 @@
 /*******************************************************************************************
-*
+*   modified to remove antialiasing from font textures:
 *   raylib [text] example - Font loading
 *
 *   NOTE: raylib can load fonts from multiple input file formats:
