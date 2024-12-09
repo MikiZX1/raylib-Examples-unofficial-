@@ -1,5 +1,5 @@
 /*******************************************************************************************
-*   modified to remove antialiasing from TTF font textures:
+*   modified to remove antialiasing from font textures:
 *   raylib [text] example - Font loading
 *
 *   NOTE: raylib can load fonts from multiple input file formats:
@@ -40,19 +40,19 @@ int main(void)
 
     // NOTE: Textures/Fonts MUST be loaded after Window initialization (OpenGL context is required)
 
-    // BMFont (AngelCode) : Font data and image atlas have been generated using external program
-    Font fontBm = LoadFont("resources/pixantiqua.fnt");
-
     // TTF font : Font data and atlas are generated directly from TTF
     // NOTE: We define a font base size of 32 pixels tall and up-to 250 characters
-    Font fontTtf = LoadFontEx("resources/pixantiqua.ttf", 32, 0, 250);
+    Font fontTtf = LoadFontEx("build/external/raylib-master/examples/text/resources/pixantiqua.ttf", 32, 0, 250);
 
     SetTextLineSpacing(16);         // Set line spacing for multiline text (when line breaks are included '\n')
 
-    bool useTtf = false;
-
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+    
     //--------------------------------------------------------------------------------------
+    char we_dont_want_aliasing=1; // change this to zero to use aliasing
+
+    if (we_dont_want_aliasing)    
+    {
     // remove antialiasing from font texture
     Image tmp1=LoadImageFromTexture(fontTtf.texture);
     ImageAlphaClear(&tmp1,(Color){0,0,0,0},0.95);
@@ -60,37 +60,22 @@ int main(void)
     fontTtf.texture=LoadTextureFromImage(tmp1);
     UnloadImage(tmp1);
     SetTextureFilter(fontTtf.texture,TEXTURE_FILTER_POINT);
+    }
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
-        //----------------------------------------------------------------------------------
-        if (IsKeyDown(KEY_SPACE)) useTtf = true;
-        else useTtf = false;
-        //----------------------------------------------------------------------------------
-
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
             ClearBackground(BLACK);
 
-            DrawText("Hold SPACE to use TTF generated font", 20, 20, 20, LIGHTGRAY);
+            DrawTextEx(fontTtf, msg, (Vector2){ 20.0f, 100.0f }, (float)fontTtf.baseSize*4, 2, LIME);
+            DrawText("Using TTF font generated", 20, GetScreenHeight() - 30, 20, GRAY);
 
-            if (!useTtf)
-            {
-                DrawTextEx(fontBm, msg, (Vector2){ 20.0f, 100.0f }, (float)fontBm.baseSize, 2, MAROON);
-                DrawText("Using BMFont (Angelcode) imported", 20, GetScreenHeight() - 30, 20, GRAY);
-            }
-            else
-            {
-                DrawTextEx(fontTtf, msg, (Vector2){ 20.0f, 100.0f }, (float)fontTtf.baseSize*4, 2, LIME);
-                DrawText("Using TTF font generated", 20, GetScreenHeight() - 30, 20, GRAY);
-            }
-
-//        DrawTexturePro(fontTtf.texture,(Rectangle){0,0,100,100},
-//        (Rectangle){0,0,600,600},(Vector2){0,0},0,WHITE);
+        DrawTexturePro(fontTtf.texture,(Rectangle){0,0,100,100},
+        (Rectangle){0,0,600,600},(Vector2){0,0},0,WHITE);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -98,7 +83,6 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    UnloadFont(fontBm);     // AngelCode Font unloading
     UnloadFont(fontTtf);    // TTF Font unloading
 
     CloseWindow();          // Close window and OpenGL context
