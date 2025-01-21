@@ -284,7 +284,7 @@ int main(void)
         if (pixel[i*4]<128)
             pixel[i*4+3]=255;
         else
-            pixel[i*4+3]=50;
+            pixel[i*4+3]=10;
 
     Texture texture_albedo_specular=LoadTextureFromImage(tmp_img2);
     UnloadImage(tmp_img2);
