@@ -3,6 +3,7 @@
 *   raylib geometry shader example 
 //  NOTE: the model drawn needs to have vertex colors
 *
+*   credits: https://github.com/Overv/Open.GL/blob/master/content/articles-en/geometry.md
 *   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software
 *
