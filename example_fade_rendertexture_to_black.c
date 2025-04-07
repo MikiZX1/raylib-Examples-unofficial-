@@ -76,7 +76,7 @@ myshader=LoadShaderFromMemory(myshader_vertsrc,myshader_fragsrc);
         }
     
 	// draw your scene here
-    // draw your scene here
+    	// draw your scene here
 	DrawCircle(GetRandomValue(0,scrw),GetRandomValue(0,scrh),20,WHITE);
 
     	EndTextureMode();
