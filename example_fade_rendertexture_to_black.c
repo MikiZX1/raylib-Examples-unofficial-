@@ -44,15 +44,16 @@ const char* myshader_fragsrc="#version 330 core\n"
 
 int main(void) {
 
-	InitWindow(scrw, scrh, "Demo");
+InitWindow(scrw, scrh, "Demo");
 
-	rendertexture1=LoadRenderTexture(scrw,scrh);
-	rendertexture2=LoadRenderTexture(scrw,scrh);
+rendertexture1=LoadRenderTexture(scrw,scrh);
+rendertexture2=LoadRenderTexture(scrw,scrh);
 
-	myshader=LoadShaderFromMemory(myshader_vertsrc,myshader_fragsrc);
+myshader=LoadShaderFromMemory(myshader_vertsrc,myshader_fragsrc);
 
-  SetTargetFPS(60);
-  while (!WindowShouldClose()) {
+ SetTargetFPS(60);
+ while (!WindowShouldClose()) 
+ {
     BeginDrawing();
 
     ClearBackground(BLACK);
@@ -78,25 +79,25 @@ int main(void) {
     // draw your scene here
 	DrawCircle(GetRandomValue(0,scrw),GetRandomValue(0,scrh),20,WHITE);
 
-    EndTextureMode();
+    	EndTextureMode();
 
 	// draw our current rendered frame on the screen
 	if (current_rendertexture==0)
-        {
-        DrawTexture(rendertexture1.texture,0,0,WHITE); 
-        }
-    else
-        {
-        DrawTexture(rendertexture2.texture,0,0,WHITE);
-        }
+	{
+	DrawTexture(rendertexture1.texture,0,0,WHITE); 
+	}
+	else
+	{
+	DrawTexture(rendertexture2.texture,0,0,WHITE);
+	}
 
     EndDrawing();
-    current_rendertexture^=1; // to alternate between 0 and 1 (since we start at value 0)
-  }
-  UnloadShader(myshader);
-  // unload textures
-  UnloadRenderTexture(rendertexture1);
-  UnloadRenderTexture(rendertexture2);
-  CloseWindow();
-  return 0;
+current_rendertexture^=1; // to alternate between 0 and 1 (since we start at value 0)
+}
+UnloadShader(myshader);
+// unload textures
+UnloadRenderTexture(rendertexture1);
+UnloadRenderTexture(rendertexture2);
+CloseWindow();
+return 0;
 }
