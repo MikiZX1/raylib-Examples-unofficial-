@@ -3,7 +3,6 @@
 *   OpenGL queries code taken from: https://stackoverflow.com/questions/36258142/opengl-c-occlusion-query
 *   
 ********************************************************************************************/
-
 #include "raylib.h"
 #include "raymath.h"
 #include "rlgl.h"
@@ -145,7 +144,8 @@ int main(void)
             }
       
         // start drawing the scene for our selection methods
-        BeginMode3D(camera);       
+        BeginMode3D(camera);    
+        rlDisableDepthTest();
         for (int i=0;i<MAX_OBJECTS;i++)
         {
         if ( selection_method == 1)
@@ -169,6 +169,7 @@ int main(void)
             DrawMesh(objects[i].mesh,material,objects[i].transform);
             }
         }
+        rlEnableDepthTest();
         EndMode3D();
 
         EndScissorMode();
