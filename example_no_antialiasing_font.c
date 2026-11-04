@@ -49,9 +49,9 @@ int main(void)
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     
     //--------------------------------------------------------------------------------------
-    char we_dont_want_aliasing=1; // change this to zero to use aliasing
+    char we_want_aliasing=1; // change this to zero to use anti-aliasing
 
-    if (we_dont_want_aliasing)    
+    if (we_want_aliasing)    
     {
     // remove antialiasing from font texture
     Image tmp1=LoadImageFromTexture(fontTtf.texture);
