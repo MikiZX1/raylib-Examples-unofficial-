@@ -4,6 +4,7 @@
 // player always upright
 // camera offset if you want to move the camera to aim
 // you can also change default camera offset to get a kind of 3rd person view
+// camera offset is in player (local) space
 //------------------------------------------------------------------------------------
 int main(void)
 {
@@ -57,7 +58,6 @@ while (!WindowShouldClose())
                         Vector3Subtract(desired_camera_offset,camera_offset)
                         , Clamp(GetFrameTime()*10.0f,0.0f,1.0f) ));
 
-    // camera offset is in local ('player') space, move it to world space
     Vector3 camera_position=camera_offset;
     camera_position=Vector3RotateByAxisAngle(camera_position,(Vector3){0.0f,1.0f,0.0f},rotation.x);
     camera_position=Vector3Add(player_position,camera_position);
