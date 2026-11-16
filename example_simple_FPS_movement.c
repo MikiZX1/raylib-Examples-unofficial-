@@ -55,8 +55,9 @@ while (!WindowShouldClose())
     camera_offset=Vector3Add(camera_offset,
                     Vector3Scale(
                         Vector3Subtract(desired_camera_offset,camera_offset)
-                        ,GetFrameTime()*10.0f));
+                        , Clamp(GetFrameTime()*10.0f,0.0f,1.0f) ));
 
+    // camera offset is in local ('player') space, move it to world space
     Vector3 camera_position=camera_offset;
     camera_position=Vector3RotateByAxisAngle(camera_position,(Vector3){0.0f,1.0f,0.0f},rotation.x);
     camera_position=Vector3Add(player_position,camera_position);
